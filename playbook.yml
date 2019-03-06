@@ -1,0 +1,24 @@
+---
+- name: install Nginx web Server
+  hosts: 192.168.68.172
+  become: true
+  tasks:
+
+  - name:insert Epel_release repo
+
+  yum:
+   name: epel-release
+   state: present
+
+  - name: install ngnix web server
+     yum: 
+      name: nagix
+      state: present
+
+  - name: copy index file to webserver
+
+    templat:
+      src: /root/Desktop/nginx/index.html
+      dest: /usr/share/nginx/html/index.html
+
+...      
